@@ -1,28 +1,28 @@
 // package:
-// file: src/h2d/proto/v1/api.proto
+// file: src/fnd/proto/v1/api.proto
 
 import * as grpc from 'grpc';
 import * as api_pb from './api_pb';
 
-interface IHandshakeLayerTwov1Service extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
-  getStatus: IHandshakeLayerTwov1Service_IGetStatus;
-  addPeer: IHandshakeLayerTwov1Service_IAddPeer;
-  banPeer: IHandshakeLayerTwov1Service_IBanPeer;
-  unbanPeer: IHandshakeLayerTwov1Service_IUnbanPeer;
-  listPeers: IHandshakeLayerTwov1Service_IListPeers;
-  checkout: IHandshakeLayerTwov1Service_ICheckout;
-  writeAt: IHandshakeLayerTwov1Service_IWriteAt;
-  truncate: IHandshakeLayerTwov1Service_ITruncate;
-  preCommit: IHandshakeLayerTwov1Service_IPreCommit;
-  commit: IHandshakeLayerTwov1Service_ICommit;
-  readAt: IHandshakeLayerTwov1Service_IReadAt;
-  getBlobInfo: IHandshakeLayerTwov1Service_IGetBlobInfo;
-  listBlobInfo: IHandshakeLayerTwov1Service_IListBlobInfo;
-  sendUpdate: IHandshakeLayerTwov1Service_ISendUpdate;
+interface IFootnotev1Service extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
+  getStatus: IFootnotev1Service_IGetStatus;
+  addPeer: IFootnotev1Service_IAddPeer;
+  banPeer: IFootnotev1Service_IBanPeer;
+  unbanPeer: IFootnotev1Service_IUnbanPeer;
+  listPeers: IFootnotev1Service_IListPeers;
+  checkout: IFootnotev1Service_ICheckout;
+  writeAt: IFootnotev1Service_IWriteAt;
+  truncate: IFootnotev1Service_ITruncate;
+  preCommit: IFootnotev1Service_IPreCommit;
+  commit: IFootnotev1Service_ICommit;
+  readAt: IFootnotev1Service_IReadAt;
+  getBlobInfo: IFootnotev1Service_IGetBlobInfo;
+  listBlobInfo: IFootnotev1Service_IListBlobInfo;
+  sendUpdate: IFootnotev1Service_ISendUpdate;
 }
 
-interface IHandshakeLayerTwov1Service_IGetStatus {
-  path: string; // "/.HandshakeLayerTwov1/GetStatus"
+interface IFootnotev1Service_IGetStatus {
+  path: string; // "/.Footnotev1/GetStatus"
   requestStream: boolean; // false
   responseStream: boolean; // false
   requestSerialize: grpc.serialize<api_pb.Empty>;
@@ -31,8 +31,8 @@ interface IHandshakeLayerTwov1Service_IGetStatus {
   responseDeserialize: grpc.deserialize<api_pb.GetStatusRes>;
 }
 
-interface IHandshakeLayerTwov1Service_IAddPeer {
-  path: string; // "/.HandshakeLayerTwov1/AddPeer"
+interface IFootnotev1Service_IAddPeer {
+  path: string; // "/.Footnotev1/AddPeer"
   requestStream: boolean; // false
   responseStream: boolean; // false
   requestSerialize: grpc.serialize<api_pb.AddPeerReq>;
@@ -41,8 +41,8 @@ interface IHandshakeLayerTwov1Service_IAddPeer {
   responseDeserialize: grpc.deserialize<api_pb.Empty>;
 }
 
-interface IHandshakeLayerTwov1Service_IBanPeer {
-  path: string; // "/.HandshakeLayerTwov1/BanPeer"
+interface IFootnotev1Service_IBanPeer {
+  path: string; // "/.Footnotev1/BanPeer"
   requestStream: boolean; // false
   responseStream: boolean; // false
   requestSerialize: grpc.serialize<api_pb.BanPeerReq>;
@@ -51,8 +51,8 @@ interface IHandshakeLayerTwov1Service_IBanPeer {
   responseDeserialize: grpc.deserialize<api_pb.Empty>;
 }
 
-interface IHandshakeLayerTwov1Service_IUnbanPeer {
-  path: string; // "/.HandshakeLayerTwov1/UnbanPeer"
+interface IFootnotev1Service_IUnbanPeer {
+  path: string; // "/.Footnotev1/UnbanPeer"
   requestStream: boolean; // false
   responseStream: boolean; // false
   requestSerialize: grpc.serialize<api_pb.UnbanPeerReq>;
@@ -61,8 +61,8 @@ interface IHandshakeLayerTwov1Service_IUnbanPeer {
   responseDeserialize: grpc.deserialize<api_pb.Empty>;
 }
 
-interface IHandshakeLayerTwov1Service_IListPeers {
-  path: string; // "/.HandshakeLayerTwov1/ListPeers"
+interface IFootnotev1Service_IListPeers {
+  path: string; // "/.Footnotev1/ListPeers"
   requestStream: boolean; // false
   responseStream: boolean; // true
   requestSerialize: grpc.serialize<api_pb.ListPeersReq>;
@@ -71,8 +71,8 @@ interface IHandshakeLayerTwov1Service_IListPeers {
   responseDeserialize: grpc.deserialize<api_pb.ListPeersRes>;
 }
 
-interface IHandshakeLayerTwov1Service_ICheckout {
-  path: string; // "/.HandshakeLayerTwov1/Checkout"
+interface IFootnotev1Service_ICheckout {
+  path: string; // "/.Footnotev1/Checkout"
   requestStream: boolean; // false
   responseStream: boolean; // false
   requestSerialize: grpc.serialize<api_pb.CheckoutReq>;
@@ -81,8 +81,8 @@ interface IHandshakeLayerTwov1Service_ICheckout {
   responseDeserialize: grpc.deserialize<api_pb.CheckoutRes>;
 }
 
-interface IHandshakeLayerTwov1Service_IWriteAt {
-  path: string; // "/.HandshakeLayerTwov1/WriteAt"
+interface IFootnotev1Service_IWriteAt {
+  path: string; // "/.Footnotev1/WriteAt"
   requestStream: boolean; // false
   responseStream: boolean; // false
   requestSerialize: grpc.serialize<api_pb.WriteAtReq>;
@@ -91,8 +91,8 @@ interface IHandshakeLayerTwov1Service_IWriteAt {
   responseDeserialize: grpc.deserialize<api_pb.WriteAtRes>;
 }
 
-interface IHandshakeLayerTwov1Service_ITruncate {
-  path: string; // "/.HandshakeLayerTwov1/Truncate"
+interface IFootnotev1Service_ITruncate {
+  path: string; // "/.Footnotev1/Truncate"
   requestStream: boolean; // false
   responseStream: boolean; // false
   requestSerialize: grpc.serialize<api_pb.TruncateReq>;
@@ -101,8 +101,8 @@ interface IHandshakeLayerTwov1Service_ITruncate {
   responseDeserialize: grpc.deserialize<api_pb.Empty>;
 }
 
-interface IHandshakeLayerTwov1Service_IPreCommit {
-  path: string; // "/.HandshakeLayerTwov1/PreCommit"
+interface IFootnotev1Service_IPreCommit {
+  path: string; // "/.Footnotev1/PreCommit"
   requestStream: boolean; // false
   responseStream: boolean; // false
   requestSerialize: grpc.serialize<api_pb.PreCommitReq>;
@@ -111,8 +111,8 @@ interface IHandshakeLayerTwov1Service_IPreCommit {
   responseDeserialize: grpc.deserialize<api_pb.PreCommitRes>;
 }
 
-interface IHandshakeLayerTwov1Service_ICommit {
-  path: string; // "/.HandshakeLayerTwov1/Commit"
+interface IFootnotev1Service_ICommit {
+  path: string; // "/.Footnotev1/Commit"
   requestStream: boolean; // false
   responseStream: boolean; // false
   requestSerialize: grpc.serialize<api_pb.CommitReq>;
@@ -121,8 +121,8 @@ interface IHandshakeLayerTwov1Service_ICommit {
   responseDeserialize: grpc.deserialize<api_pb.CommitRes>;
 }
 
-interface IHandshakeLayerTwov1Service_IReadAt {
-  path: string; // "/.HandshakeLayerTwov1/ReadAt"
+interface IFootnotev1Service_IReadAt {
+  path: string; // "/.Footnotev1/ReadAt"
   requestStream: boolean; // false
   responseStream: boolean; // false
   requestSerialize: grpc.serialize<api_pb.ReadAtReq>;
@@ -131,8 +131,8 @@ interface IHandshakeLayerTwov1Service_IReadAt {
   responseDeserialize: grpc.deserialize<api_pb.ReadAtRes>;
 }
 
-interface IHandshakeLayerTwov1Service_IGetBlobInfo {
-  path: string; // "/.HandshakeLayerTwov1/GetBlobInfo"
+interface IFootnotev1Service_IGetBlobInfo {
+  path: string; // "/.Footnotev1/GetBlobInfo"
   requestStream: boolean; // false
   responseStream: boolean; // false
   requestSerialize: grpc.serialize<api_pb.BlobInfoReq>;
@@ -141,8 +141,8 @@ interface IHandshakeLayerTwov1Service_IGetBlobInfo {
   responseDeserialize: grpc.deserialize<api_pb.BlobInfoRes>;
 }
 
-interface IHandshakeLayerTwov1Service_IListBlobInfo {
-  path: string; // "/.HandshakeLayerTwov1/ListBlobInfo"
+interface IFootnotev1Service_IListBlobInfo {
+  path: string; // "/.Footnotev1/ListBlobInfo"
   requestStream: boolean; // false
   responseStream: boolean; // true
   requestSerialize: grpc.serialize<api_pb.ListBlobInfoReq>;
@@ -151,8 +151,8 @@ interface IHandshakeLayerTwov1Service_IListBlobInfo {
   responseDeserialize: grpc.deserialize<api_pb.BlobInfoRes>;
 }
 
-interface IHandshakeLayerTwov1Service_ISendUpdate {
-  path: string; // "/.HandshakeLayerTwov1/SendUpdate"
+interface IFootnotev1Service_ISendUpdate {
+  path: string; // "/.Footnotev1/SendUpdate"
   requestStream: boolean; // false
   responseStream: boolean; // false
   requestSerialize: grpc.serialize<api_pb.SendUpdateReq>;
@@ -161,8 +161,8 @@ interface IHandshakeLayerTwov1Service_ISendUpdate {
   responseDeserialize: grpc.deserialize<api_pb.SendUpdateRes>;
 }
 
-export const HandshakeLayerTwov1Service: IHandshakeLayerTwov1Service;
-export interface IHandshakeLayerTwov1Server {
+export const Footnotev1Service: IFootnotev1Service;
+export interface IFootnotev1Server {
   getStatus: grpc.handleUnaryCall<api_pb.Empty, api_pb.GetStatusRes>;
   addPeer: grpc.handleUnaryCall<api_pb.AddPeerReq, api_pb.Empty>;
   banPeer: grpc.handleUnaryCall<api_pb.BanPeerReq, api_pb.Empty>;
@@ -179,7 +179,7 @@ export interface IHandshakeLayerTwov1Server {
   sendUpdate: grpc.handleUnaryCall<api_pb.SendUpdateReq, api_pb.SendUpdateRes>;
 }
 
-export interface IHandshakeLayerTwov1Client {
+export interface IFootnotev1Client {
   getStatus(request: api_pb.Empty, callback: (error: Error | null, response: api_pb.GetStatusRes) => void): grpc.ClientUnaryCall;
   getStatus(request: api_pb.Empty, metadata: grpc.Metadata, callback: (error: Error | null, response: api_pb.GetStatusRes) => void): grpc.ClientUnaryCall;
   addPeer(request: api_pb.AddPeerReq, callback: (error: Error | null, response: api_pb.Empty) => void): grpc.ClientUnaryCall;
@@ -208,7 +208,7 @@ export interface IHandshakeLayerTwov1Client {
   sendUpdate(request: api_pb.SendUpdateReq, metadata: grpc.Metadata, callback: (error: Error | null, response: api_pb.SendUpdateRes) => void): grpc.ClientUnaryCall;
 }
 
-export class HandshakeLayerTwov1Client extends grpc.Client implements IHandshakeLayerTwov1Client {
+export class Footnotev1Client extends grpc.Client implements IFootnotev1Client {
   constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
   public getStatus(request: api_pb.Empty, callback: (error: Error | null, response: api_pb.GetStatusRes) => void): grpc.ClientUnaryCall;
   public getStatus(request: api_pb.Empty, metadata: grpc.Metadata, callback: (error: Error | null, response: api_pb.GetStatusRes) => void): grpc.ClientUnaryCall;

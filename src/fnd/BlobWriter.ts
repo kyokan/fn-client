@@ -1,14 +1,14 @@
 import {IOCallback, Writer} from '../io/types';
-import HandshakeLayerTwoClient from './HandshakeLayerTwoClient';
+import FootnoteClient from './FootnoteClient';
 
 /**
- * A [[Writer]] that writes data to a HandshakeLayerTwo blob via gRPC.
- * Users must first check-out a blob via [[HandshakeLayerTwoClient.checkout]]
+ * A [[Writer]] that writes data to a Footnote blob via gRPC.
+ * Users must first check-out a blob via [[FootnoteClient.checkout]]
  * to receive a txId. Blob updates made via [[BlobWriter]] must
  * be committed separately.
  */
 export default class BlobWriter implements Writer {
-  private readonly client: HandshakeLayerTwoClient;
+  private readonly client: FootnoteClient;
 
   private readonly txId: number;
 
@@ -17,11 +17,11 @@ export default class BlobWriter implements Writer {
   /**
    * Constructs a new BlobWriter.
    *
-   * @param client - A gRPC write stream. Returned by [[HandshakeLayerTwoClient.createWriteStream]].
-   * @param txId - The transaction ID of the blob being modified. Returned by [[HandshakeLayerTwoClient.checkout]].
+   * @param client - A gRPC write stream. Returned by [[FootnoteClient.createWriteStream]].
+   * @param txId - The transaction ID of the blob being modified. Returned by [[FootnoteClient.checkout]].
    * @param offset - The offset to start writing at.
    */
-  constructor (client: HandshakeLayerTwoClient, txId: number, offset = 0) {
+  constructor (client: FootnoteClient, txId: number, offset = 0) {
     this.client = client;
     this.txId = txId;
     this.offset = offset;

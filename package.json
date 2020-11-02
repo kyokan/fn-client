@@ -1,6 +1,6 @@
 {
   "name": "fn-client",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "footnote rpc client & message format utilities",
   "main": "index.js",
   "scripts": {

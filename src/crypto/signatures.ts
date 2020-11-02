@@ -4,8 +4,8 @@ import {ZERO_HASH} from "../io/util";
 
 /**
  * Generates a blob's seal hash and signs it. Used to authorize changes to a blob
- * prior to it being committed using [[HandshakeLayerTwoClient.commit]]. Most of this method's
- * parameters can be obtained by calling [[HandshakeLayerTwoClient.preCommit]].
+ * prior to it being committed using [[FootnoteClient.commit]]. Most of this method's
+ * parameters can be obtained by calling [[FootnoteClient.preCommit]].
  *
  * @param signer - The signer used to sign this blob.
  * @param name - The blob's TLD.

@@ -1,5 +1,5 @@
 import {BLOB_SIZE} from './constants';
-import HandshakeLayerTwoClient from './HandshakeLayerTwoClient';
+import FootnoteClient from './FootnoteClient';
 import {EOF, Reader} from '../io/types';
 
 /**
@@ -9,7 +9,7 @@ import {EOF, Reader} from '../io/types';
 export class BlobReader implements Reader {
   private readonly name: string;
 
-  private readonly client: HandshakeLayerTwoClient;
+  private readonly client: FootnoteClient;
 
   private offset: number = 0;
 
@@ -17,9 +17,9 @@ export class BlobReader implements Reader {
    * Constructs a new ReadableBlobStream.
    *
    * @param name - The name you want to stream.
-   * @param client - A HandshakeLayerTwoClient instance.
+   * @param client - A FootnoteClient instance.
    */
-  constructor (name: string, client: HandshakeLayerTwoClient) {
+  constructor (name: string, client: FootnoteClient) {
     this.name = name;
     this.client = client;
   }

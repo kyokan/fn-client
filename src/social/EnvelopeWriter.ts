@@ -1,6 +1,6 @@
-import HandshakeLayerTwoClient from '../h2d/HandshakeLayerTwoClient';
+import FootnoteClient from '../fnd/FootnoteClient';
 import {Signer} from '../crypto/signer';
-import BlobWriter from '../h2d/BlobWriter';
+import BlobWriter from '../fnd/BlobWriter';
 import {encodeEnvelope, Envelope} from './Envelope';
 import {sealAndSign} from '../crypto/signatures';
 
@@ -12,7 +12,7 @@ import {sealAndSign} from '../crypto/signatures';
  * that should be written to the blob. Then, call commit.
  */
 export class EnvelopeWriter {
-  private readonly client: HandshakeLayerTwoClient;
+  private readonly client: FootnoteClient;
 
   private readonly tld: string;
 
@@ -34,7 +34,7 @@ export class EnvelopeWriter {
    * @param signer - A Signer instance to sign the blob's new Merkle root.
    * @param startOffset - The offset at which to start writing.
    */
-  constructor (client: HandshakeLayerTwoClient, tld: string, signer: Signer, startOffset: number = 0) {
+  constructor (client: FootnoteClient, tld: string, signer: Signer, startOffset: number = 0) {
     this.client = client;
     this.tld = tld;
     this.signer = signer;

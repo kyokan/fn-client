@@ -1,4 +1,4 @@
-import HandshakeLayerTwoClient from './HandshakeLayerTwoClient';
+import FootnoteClient from './FootnoteClient';
 import {BufferedReader} from '../io/BufferedReader';
 import {BlobReader} from './BlobReader';
 import {readAll} from '../io/util';
@@ -13,7 +13,7 @@ describe('BlobReader', () => {
   });
 
   it('should read blobs', (done) => {
-    const client = new HandshakeLayerTwoClient(process.env.FN_URL!);
+    const client = new FootnoteClient(process.env.FN_URL!);
     const r = new BufferedReader(new BlobReader('transistor', client), 1024*1024);
     const h = crypto.createHash('sha1');
     readAll(r, (err, data) => {

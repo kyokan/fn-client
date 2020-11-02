@@ -258,9 +258,9 @@ function deserialize_WriteAtRes(buffer_arg) {
 }
 
 
-var HandshakeLayerTwov1Service = exports.HandshakeLayerTwov1Service = {
+var Footnotev1Service = exports.Footnotev1Service = {
   getStatus: {
-    path: '/HandshakeLayerTwov1/GetStatus',
+    path: '/Footnotev1/GetStatus',
     requestStream: false,
     responseStream: false,
     requestType: api_pb.Empty,
@@ -271,7 +271,7 @@ var HandshakeLayerTwov1Service = exports.HandshakeLayerTwov1Service = {
     responseDeserialize: deserialize_GetStatusRes,
   },
   addPeer: {
-    path: '/HandshakeLayerTwov1/AddPeer',
+    path: '/Footnotev1/AddPeer',
     requestStream: false,
     responseStream: false,
     requestType: api_pb.AddPeerReq,
@@ -282,7 +282,7 @@ var HandshakeLayerTwov1Service = exports.HandshakeLayerTwov1Service = {
     responseDeserialize: deserialize_Empty,
   },
   banPeer: {
-    path: '/HandshakeLayerTwov1/BanPeer',
+    path: '/Footnotev1/BanPeer',
     requestStream: false,
     responseStream: false,
     requestType: api_pb.BanPeerReq,
@@ -293,7 +293,7 @@ var HandshakeLayerTwov1Service = exports.HandshakeLayerTwov1Service = {
     responseDeserialize: deserialize_Empty,
   },
   unbanPeer: {
-    path: '/HandshakeLayerTwov1/UnbanPeer',
+    path: '/Footnotev1/UnbanPeer',
     requestStream: false,
     responseStream: false,
     requestType: api_pb.UnbanPeerReq,
@@ -304,7 +304,7 @@ var HandshakeLayerTwov1Service = exports.HandshakeLayerTwov1Service = {
     responseDeserialize: deserialize_Empty,
   },
   listPeers: {
-    path: '/HandshakeLayerTwov1/ListPeers',
+    path: '/Footnotev1/ListPeers',
     requestStream: false,
     responseStream: true,
     requestType: api_pb.ListPeersReq,
@@ -315,7 +315,7 @@ var HandshakeLayerTwov1Service = exports.HandshakeLayerTwov1Service = {
     responseDeserialize: deserialize_ListPeersRes,
   },
   checkout: {
-    path: '/HandshakeLayerTwov1/Checkout',
+    path: '/Footnotev1/Checkout',
     requestStream: false,
     responseStream: false,
     requestType: api_pb.CheckoutReq,
@@ -326,7 +326,7 @@ var HandshakeLayerTwov1Service = exports.HandshakeLayerTwov1Service = {
     responseDeserialize: deserialize_CheckoutRes,
   },
   writeAt: {
-    path: '/HandshakeLayerTwov1/WriteAt',
+    path: '/Footnotev1/WriteAt',
     requestStream: false,
     responseStream: false,
     requestType: api_pb.WriteAtReq,
@@ -337,7 +337,7 @@ var HandshakeLayerTwov1Service = exports.HandshakeLayerTwov1Service = {
     responseDeserialize: deserialize_WriteAtRes,
   },
   truncate: {
-    path: '/HandshakeLayerTwov1/Truncate',
+    path: '/Footnotev1/Truncate',
     requestStream: false,
     responseStream: false,
     requestType: api_pb.TruncateReq,
@@ -348,7 +348,7 @@ var HandshakeLayerTwov1Service = exports.HandshakeLayerTwov1Service = {
     responseDeserialize: deserialize_Empty,
   },
   preCommit: {
-    path: '/HandshakeLayerTwov1/PreCommit',
+    path: '/Footnotev1/PreCommit',
     requestStream: false,
     responseStream: false,
     requestType: api_pb.PreCommitReq,
@@ -359,7 +359,7 @@ var HandshakeLayerTwov1Service = exports.HandshakeLayerTwov1Service = {
     responseDeserialize: deserialize_PreCommitRes,
   },
   commit: {
-    path: '/HandshakeLayerTwov1/Commit',
+    path: '/Footnotev1/Commit',
     requestStream: false,
     responseStream: false,
     requestType: api_pb.CommitReq,
@@ -370,7 +370,7 @@ var HandshakeLayerTwov1Service = exports.HandshakeLayerTwov1Service = {
     responseDeserialize: deserialize_CommitRes,
   },
   readAt: {
-    path: '/HandshakeLayerTwov1/ReadAt',
+    path: '/Footnotev1/ReadAt',
     requestStream: false,
     responseStream: false,
     requestType: api_pb.ReadAtReq,
@@ -381,7 +381,7 @@ var HandshakeLayerTwov1Service = exports.HandshakeLayerTwov1Service = {
     responseDeserialize: deserialize_ReadAtRes,
   },
   getBlobInfo: {
-    path: '/HandshakeLayerTwov1/GetBlobInfo',
+    path: '/Footnotev1/GetBlobInfo',
     requestStream: false,
     responseStream: false,
     requestType: api_pb.BlobInfoReq,
@@ -392,7 +392,7 @@ var HandshakeLayerTwov1Service = exports.HandshakeLayerTwov1Service = {
     responseDeserialize: deserialize_BlobInfoRes,
   },
   listBlobInfo: {
-    path: '/HandshakeLayerTwov1/ListBlobInfo',
+    path: '/Footnotev1/ListBlobInfo',
     requestStream: false,
     responseStream: true,
     requestType: api_pb.ListBlobInfoReq,
@@ -403,7 +403,7 @@ var HandshakeLayerTwov1Service = exports.HandshakeLayerTwov1Service = {
     responseDeserialize: deserialize_BlobInfoRes,
   },
   sendUpdate: {
-    path: '/HandshakeLayerTwov1/SendUpdate',
+    path: '/Footnotev1/SendUpdate',
     requestStream: false,
     responseStream: false,
     requestType: api_pb.SendUpdateReq,
@@ -415,4 +415,4 @@ var HandshakeLayerTwov1Service = exports.HandshakeLayerTwov1Service = {
   },
 };
 
-exports.HandshakeLayerTwov1Client = grpc.makeGenericClientConstructor(HandshakeLayerTwov1Service);
+exports.Footnotev1Client = grpc.makeGenericClientConstructor(Footnotev1Service);

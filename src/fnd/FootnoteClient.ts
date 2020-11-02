@@ -1,4 +1,4 @@
-import {HandshakeLayerTwov1Client} from './proto/v1/api_grpc_pb';
+import {Footnotev1Client} from './proto/v1/api_grpc_pb';
 import * as grpc from 'grpc';
 import {
   AddPeerReq,
@@ -29,19 +29,19 @@ import {asyncIterateAllEnvelopes} from "../social/streams";
 
 type OnEnvelopeCallback = (type: string, subtype: string, env: Envelope) => Promise<boolean>;
 /**
- * The base gRPC client used to interact with HandshakeLayerTwo nodes.
+ * The base gRPC client used to interact with Footnote nodes.
  */
-export default class HandshakeLayerTwoClient {
-  private readonly client: HandshakeLayerTwov1Client;
+export default class FootnoteClient {
+  private readonly client: Footnotev1Client;
 
   /**
    * Constructs a new client.
    *
-   * @param url - Hostname and port of the HandshakeLayerTwo node's RPC server.
+   * @param url - Hostname and port of the Footnote node's RPC server.
    * @param credentials - Unused at this time.
    */
   constructor (url: string, credentials = grpc.credentials.createInsecure()) {
-    this.client = new HandshakeLayerTwov1Client(url, credentials);
+    this.client = new Footnotev1Client(url, credentials);
   }
 
   getStatus (): Promise<Status> {
@@ -116,7 +116,7 @@ export default class HandshakeLayerTwoClient {
   }
 
   /**
-   * Returns the HandshakeLayerTwo node's list of connected peers.
+   * Returns the Footnote node's list of connected peers.
    */
   listPeers (): Promise<Peer[]> {
     const req = new ListPeersReq();
@@ -219,7 +219,7 @@ export default class HandshakeLayerTwoClient {
    * @param txId - The transaction ID of the blob being modified.
    * @param timestamp - The timestamp of the modification.
    * @param signature - The signature of the modification.
-   * @param broadcast - Whether or not to gossip this update to HandshakeLayerTwo peers.
+   * @param broadcast - Whether or not to gossip this update to Footnote peers.
    */
   commit (txId: number, timestamp: Date, signature: Buffer, broadcast = false): Promise<void> {
     const req = new CommitReq();
@@ -330,7 +330,7 @@ export default class HandshakeLayerTwoClient {
   }
 
   /**
-   * Streams [[BlobInfo]] for all names HandshakeLayerTwo is aware of.
+   * Streams [[BlobInfo]] for all names Footnote is aware of.
    *
    * @param start
    * @param limit

@@ -1,5 +1,5 @@
 // package:
-// file: src/h2d/proto/v1/api.proto
+// file: src/fnd/proto/v1/api.proto
 
 import * as jspb from 'google-protobuf';
 
