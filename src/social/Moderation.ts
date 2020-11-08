@@ -1,6 +1,8 @@
 import {IOCallback, Reader, Writer} from '../io/types';
-import {decodeFixedBytes} from '../io/decoding';
+import {decodeVariableBytes} from '../io/decoding';
 import {Message} from './Message';
+import {chainIO} from "../io/util";
+import {encodeVariableBytes} from "../io/encoding";
 
 /**
  * Possible subtypes for a [[Moderation]] message. A
@@ -47,7 +49,10 @@ export class Moderation extends Message {
  * @param cb
  */
 export function encodeModeration (w: Writer, mod: Moderation, cb: IOCallback) {
-  w.write(mod.reference, cb);
+  chainIO(
+    cb,
+    (cb) => encodeVariableBytes(w, mod.reference, cb),
+  );
 }
 
 /**
@@ -59,7 +64,7 @@ export function encodeModeration (w: Writer, mod: Moderation, cb: IOCallback) {
  * @param cb
  */
 export function decodeModeration (r: Reader, version: number, subtype: Buffer, cb: (err: any, mod: Moderation | null) => void): void {
-  decodeFixedBytes(r, 32, (err, b) => {
+  decodeVariableBytes(r, (err, b) => {
     if (err) {
       return cb(err, null);
     }
