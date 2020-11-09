@@ -22,10 +22,10 @@ import {
 import {Peer} from './Peer';
 import {BlobInfo} from './BlobInfo';
 import {Status} from './Status';
-import {Envelope} from "../social/Envelope";
+import {Envelope} from "../wire/Envelope";
 import {BlobReader} from "./BlobReader";
 import {BufferedReader} from "../io/BufferedReader";
-import {asyncIterateAllEnvelopes} from "../social/streams";
+import {asyncIterateAllEnvelopes} from "../wire/streams";
 
 type OnEnvelopeCallback = (type: string, subtype: string, env: Envelope) => Promise<boolean>;
 /**

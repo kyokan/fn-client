@@ -9,7 +9,6 @@ import {decodeModeration, encodeModeration, Moderation} from './Moderation';
 import {decodeUnknown, encodeUnknown, Unknown} from './Unknown';
 import {MutableBuffer} from '../io/MutableBuffer';
 import {encodeFixedBytes, encodeTimestamp, encodeUint8, encodeVariableBytes} from '../io/encoding';
-import {decodeMedia, encodeMedia, Media} from './Media';
 
 export class Envelope {
   public nameIndex: number;
@@ -101,9 +100,6 @@ export function encodeEnvelopeMessage (w: Writer, envelope: Envelope, cb: IOCall
       break;
     case Moderation.TYPE.toString('hex'):
       encodeModeration(w, envelope.message as Moderation, cb);
-      break;
-    case Media.TYPE.toString('hex'):
-      encodeMedia(w, envelope.message as Media, cb);
       break;
     default:
       if (!(envelope.message instanceof Unknown)) {
@@ -222,15 +218,6 @@ export function decodeEnvelopeBuffer (r: Reader, cb: (err: any, envelope: Envelo
               return cb(err);
             }
             message = mod!;
-            cb(null);
-          });
-          break;
-        case Media.TYPE.toString('hex'):
-          decodeMedia(r, msgVersion, msgSubtype, (err, med) => {
-            if (err) {
-              return cb(err);
-            }
-            message = med!;
             cb(null);
           });
           break;

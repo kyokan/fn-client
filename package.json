@@ -1,12 +1,12 @@
 {
   "name": "fn-client",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "footnote rpc client & message format utilities",
   "main": "index.js",
   "scripts": {
     "test": "mocha -r ts-node/register src/**/*.spec.ts",
     "build": "tsc -p ./tsconfig.json",
-    "clean": "rm -rf ./dist",
+    "clean": "rm -rf ./lib",
     "docs": "typedoc --out docs src",
     "prepublishOnly": "npm run build"
   },
@@ -35,6 +35,6 @@
     "ts-node": "8.5.2"
   },
   "files": [
-    "dist/**/*"
+    "lib/**/*"
   ]
 }
