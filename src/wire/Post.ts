@@ -21,11 +21,15 @@ export const RefTypeHex: {
 } = {
   ff: RefType.REPLY,
   fe: RefType.TOPIC,
-  ['00']: RefType.UNKNOWN,
+  '00': RefType.UNKNOWN,
 };
 
 export class Post extends Message {
   public static readonly TYPE = Buffer.from('PST', 'utf-8');
+  public static readonly LINK_SUBTYPE = Buffer.concat([
+    Buffer.from('L', 'utf-8'),
+    Buffer.alloc(3),
+  ]) ;
 
   public readonly body: string;
 

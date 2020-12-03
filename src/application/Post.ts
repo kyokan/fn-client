@@ -5,6 +5,8 @@ import {
   RefType,
 } from '../wire/Post';
 
+export type PostType = '' | 'LINK';
+
 export class Post implements Message {
   public readonly id: number;
 
@@ -24,7 +26,20 @@ export class Post implements Message {
 
   public readonly pinCount: number;
 
-  constructor (id: number, body: string, title: string | null, reference: string | null, topic: string | null, tags: string[], replyCount: number, likeCount: number, pinCount: number) {
+  public readonly type: PostType;
+
+  constructor (
+    id: number,
+    body: string,
+    title: string | null,
+    reference: string | null,
+    topic: string | null,
+    tags: string[],
+    replyCount: number,
+    likeCount: number,
+    pinCount: number,
+    type?: PostType,
+  ) {
     this.id = id;
     this.body = body;
     this.title = title;
@@ -34,6 +49,7 @@ export class Post implements Message {
     this.replyCount = replyCount;
     this.likeCount = likeCount;
     this.pinCount = pinCount;
+    this.type = type || '';
   }
 
   public toWire (): WireMessage {
@@ -52,9 +68,17 @@ export class Post implements Message {
       refType = RefType.TOPIC;
     }
 
+    let subtype = Buffer.alloc(4);
+    switch (this.type) {
+      case "LINK":
+        subtype = WirePost.LINK_SUBTYPE;
+      default:
+        break;
+    }
+
     return new WirePost(
       1,
-      Buffer.alloc(4),
+      subtype,
       this.body,
       this.title,
       reference,

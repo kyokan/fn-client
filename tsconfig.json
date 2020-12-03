@@ -91,7 +91,7 @@
     "out": "docs",
     "exclude": [
       "./src/**/*.spec.ts",
-      "./src/footnote/proto/**/*",
+      "./src/fnd/proto/**/*",
       "./src/testutil"
     ],
     "excludeNotExported": true,
