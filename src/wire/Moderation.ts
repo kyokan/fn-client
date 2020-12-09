@@ -12,7 +12,10 @@ import {encodeVariableBytes} from "../io/encoding";
  */
 export enum ModerationType {
   LIKE = 'LIKE',
+  HIDE = 'HIDE',
   PIN = 'PIN',
+  SETTINGS__NO_BLOCKS = 'SETTINGS__NO_BLOCKS' ,
+  SETTINGS__FOLLOWS_ONLY = 'SETTINGS__FOLLOWS_ONLY',
   UNKNOWN = 'UNKNOWN'
 }
 
@@ -22,6 +25,12 @@ export class Moderation extends Message {
   public static readonly LIKE_SUBTYPE = Buffer.from([0x4C, 0x00, 0x00, 0x00]);
 
   public static readonly PIN_SUBTYPE = Buffer.from([0x50, 0x00, 0x00, 0x00]);
+
+  public static readonly HIDE_SUBTYPE = Buffer.from([0x48, 0x00, 0x00, 0x00]);
+
+  public static readonly SETTINGS__NO_BLOCKS_SUBTYPE = Buffer.from([0x00, 0x00, 0x00, 0x00]);
+
+  public static readonly SETTINGS__FOLLOWS_ONLY_SUBTYPE = Buffer.from([0x00, 0x00, 0x00, 0x01]);
 
   public readonly reference: Buffer;
 
@@ -34,9 +43,23 @@ export class Moderation extends Message {
     if (this.subtype.equals(Moderation.LIKE_SUBTYPE)) {
       return ModerationType.LIKE;
     }
+
     if (this.subtype.equals(Moderation.PIN_SUBTYPE)) {
       return ModerationType.PIN;
     }
+
+    if (this.subtype.equals(Moderation.SETTINGS__NO_BLOCKS_SUBTYPE)) {
+      return ModerationType.SETTINGS__NO_BLOCKS;
+    }
+
+    if (this.subtype.equals(Moderation.SETTINGS__FOLLOWS_ONLY_SUBTYPE)) {
+      return ModerationType.SETTINGS__FOLLOWS_ONLY;
+    }
+
+    if (this.subtype.equals(Moderation.HIDE_SUBTYPE)) {
+      return ModerationType.HIDE;
+    }
+
     return ModerationType.UNKNOWN;
   }
 }

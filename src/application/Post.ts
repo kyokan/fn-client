@@ -72,6 +72,7 @@ export class Post implements Message {
     switch (this.type) {
       case "LINK":
         subtype = WirePost.LINK_SUBTYPE;
+        break;
       default:
         break;
     }
