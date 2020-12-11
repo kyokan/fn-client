@@ -28,6 +28,9 @@ export class Post implements Message {
 
   public readonly type: PostType;
 
+  public readonly moderationSetting?: 'SETTINGS__NO_BLOCKS' | 'SETTINGS__FOLLOWS_ONLY' | null;
+
+
   constructor (
     id: number,
     body: string,
@@ -38,6 +41,7 @@ export class Post implements Message {
     replyCount: number,
     likeCount: number,
     pinCount: number,
+    moderationSetting?: 'SETTINGS__NO_BLOCKS' | 'SETTINGS__FOLLOWS_ONLY' | null,
     type?: PostType,
   ) {
     this.id = id;
@@ -50,6 +54,7 @@ export class Post implements Message {
     this.likeCount = likeCount;
     this.pinCount = pinCount;
     this.type = type || '';
+    this.moderationSetting = moderationSetting;
   }
 
   public toWire (): WireMessage {
