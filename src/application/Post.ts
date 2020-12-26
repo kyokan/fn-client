@@ -5,7 +5,8 @@ import {
   RefType,
 } from '../wire/Post';
 
-export type PostType = '' | 'LINK';
+export type PostType = '' | 'LINK' | 'VIDEO';
+export type ModerationSetting = 'SETTINGS__NO_BLOCKS' | 'SETTINGS__FOLLOWS_ONLY' | null;
 
 export class Post implements Message {
   public readonly id: number;
@@ -28,8 +29,11 @@ export class Post implements Message {
 
   public readonly type: PostType;
 
-  public readonly moderationSetting?: 'SETTINGS__NO_BLOCKS' | 'SETTINGS__FOLLOWS_ONLY' | null;
+  public readonly moderationSetting?: ModerationSetting;
 
+  public readonly videoUrl?: string;
+
+  public readonly thumbnailUrl?: string;
 
   constructor (
     id: number,
@@ -41,8 +45,10 @@ export class Post implements Message {
     replyCount: number,
     likeCount: number,
     pinCount: number,
-    moderationSetting?: 'SETTINGS__NO_BLOCKS' | 'SETTINGS__FOLLOWS_ONLY' | null,
+    moderationSetting?: ModerationSetting,
     type?: PostType,
+    videoUrl?: string,
+    thumbnailUrl?: string,
   ) {
     this.id = id;
     this.body = body;
@@ -55,6 +61,8 @@ export class Post implements Message {
     this.pinCount = pinCount;
     this.type = type || '';
     this.moderationSetting = moderationSetting;
+    this.videoUrl = videoUrl;
+    this.thumbnailUrl = thumbnailUrl;
   }
 
   public toWire (): WireMessage {
@@ -77,6 +85,9 @@ export class Post implements Message {
     switch (this.type) {
       case "LINK":
         subtype = WirePost.LINK_SUBTYPE;
+        break;
+      case "VIDEO":
+        subtype = WirePost.VIDEO_SUBTYPE;
         break;
       default:
         break;

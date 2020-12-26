@@ -24,11 +24,20 @@ export const RefTypeHex: {
   '00': RefType.UNKNOWN,
 };
 
+export type VideoAdditionData = {
+  video?: string | null;
+  thumbnail?: string | null;
+}
+
 export class Post extends Message {
   public static readonly TYPE = Buffer.from('PST', 'utf-8');
   public static readonly LINK_SUBTYPE = Buffer.concat([
     Buffer.from('L', 'utf-8'),
     Buffer.alloc(3),
+  ]) ;
+  public static readonly VIDEO_SUBTYPE = Buffer.concat([
+    Buffer.from('VID', 'utf-8'),
+    Buffer.alloc(1),
   ]) ;
 
   public readonly body: string;
@@ -39,6 +48,10 @@ export class Post extends Message {
 
   public readonly refType: RefType | null;
 
+  public readonly videoUrl: string;
+
+  public readonly thumbnailUrl: string;
+
   constructor (
     version: number,
     subtype: Buffer,
@@ -46,12 +59,15 @@ export class Post extends Message {
     title: string | null,
     reference: Buffer | null = null,
     refType: RefType | null = null,
+    additionalData?: VideoAdditionData,
   ) {
     super(Post.TYPE, version, subtype);
     this.body = body;
     this.title = title;
     this.reference = reference;
     this.refType = refType;
+    this.videoUrl = additionalData?.video || '';
+    this.thumbnailUrl = additionalData?.thumbnail || '';
   }
 }
 
@@ -63,17 +79,17 @@ export class Post extends Message {
  * @param cb
  */
 export function encodePost (w: Writer, post: Post, cb: IOCallback): void {
-  const {reference, refType} = post;
-  let buf = Buffer.alloc(0);
+  const {reference, refType, subtype} = post;
+  let referenceBuf = Buffer.alloc(0);
 
   if (reference) {
     if (refType) {
-      buf = Buffer.concat([
+      referenceBuf = Buffer.concat([
         RefTypeValue[refType],
         reference,
       ]);
     } else {
-      buf = Buffer.concat([
+      referenceBuf = Buffer.concat([
         RefTypeValue.UNKNOWN,
         reference,
       ])
@@ -84,7 +100,9 @@ export function encodePost (w: Writer, post: Post, cb: IOCallback): void {
     cb,
     (cb) => encodeString(w, post.body, cb),
     (cb) => encodeString(w, post.title || '', cb),
-    (cb) => encodeVariableBytes(w, buf, cb),
+    (cb) => encodeVariableBytes(w, referenceBuf, cb),
+    (cb) => encodeString(w, post.videoUrl, cb),
+    (cb) => encodeString(w, post.thumbnailUrl, cb),
   );
 }
 
@@ -101,6 +119,9 @@ export function decodePost (r: Reader, version: number, subtype: Buffer, cb: (er
   let title: string | null;
   let reference: Buffer | null;
   let refType: RefType | null;
+  let videoUrl: string | null;
+  let thumbnailUrl: string | null;
+
   chain(
     (err) => {
       if (err) {
@@ -113,6 +134,10 @@ export function decodePost (r: Reader, version: number, subtype: Buffer, cb: (er
         title,
         reference,
         refType,
+        {
+          video: videoUrl,
+          thumbnail: thumbnailUrl,
+        },
       ));
     },
     (cb) => decodeString(r, (err, b) => {
@@ -143,5 +168,30 @@ export function decodePost (r: Reader, version: number, subtype: Buffer, cb: (er
 
       cb(null);
     }),
+    (cb) => decodeString(r, (err, b) => {
+      if (err === 'EOF') {
+        reference = null;
+        return cb(null);
+      } else if (err) {
+        return cb(err);
+      }
+
+      videoUrl = b!.length > 0 ? b! : null;
+
+      cb(null);
+    }),
+    (cb) => decodeString(r, (err, b) => {
+      if (err === 'EOF') {
+        reference = null;
+        return cb(null);
+      } else if (err) {
+        return cb(err);
+      }
+
+      thumbnailUrl = b!.length > 0 ? b! : null;
+
+      cb(null);
+    }),
+
   );
 }

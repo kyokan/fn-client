@@ -14,6 +14,7 @@ export enum ModerationType {
   LIKE = 'LIKE',
   HIDE = 'HIDE',
   PIN = 'PIN',
+  NSFW = 'NSFW',
   SETTINGS__NO_BLOCKS = 'SETTINGS__NO_BLOCKS' ,
   SETTINGS__FOLLOWS_ONLY = 'SETTINGS__FOLLOWS_ONLY',
   UNKNOWN = 'UNKNOWN'
@@ -28,9 +29,19 @@ export class Moderation extends Message {
 
   public static readonly HIDE_SUBTYPE = Buffer.from([0x48, 0x00, 0x00, 0x00]);
 
-  public static readonly SETTINGS__NO_BLOCKS_SUBTYPE = Buffer.from([0x00, 0x00, 0x00, 0x00]);
+  public static readonly SETTINGS__NO_BLOCKS_SUBTYPE = Buffer.concat([
+    Buffer.from('NB', 'utf-8'),
+    Buffer.alloc(2),
+  ]);
 
-  public static readonly SETTINGS__FOLLOWS_ONLY_SUBTYPE = Buffer.from([0x00, 0x00, 0x00, 0x01]);
+  public static readonly SETTINGS__FOLLOWS_ONLY_SUBTYPE = Buffer.concat([
+    Buffer.from('FO', 'utf-8'),
+    Buffer.alloc(2),
+  ]);
+
+  public static readonly NSFW_SUBTYPE = Buffer.concat([
+    Buffer.from('NSFW', 'utf-8'),
+  ]);
 
   public readonly reference: Buffer;
 
@@ -58,6 +69,10 @@ export class Moderation extends Message {
 
     if (this.subtype.equals(Moderation.HIDE_SUBTYPE)) {
       return ModerationType.HIDE;
+    }
+
+    if (this.subtype.equals(Moderation.NSFW_SUBTYPE)) {
+      return ModerationType.NSFW;
     }
 
     return ModerationType.UNKNOWN;

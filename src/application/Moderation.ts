@@ -2,7 +2,7 @@ import {Message} from './Envelope';
 import {Message as WireMessage} from '../wire/Message';
 import {Moderation as WireModeration} from '../wire/Moderation';
 
-export type ModerationType = 'LIKE' | 'HIDE' | 'PIN' | 'SETTINGS__NO_BLOCKS' | 'SETTINGS__FOLLOWS_ONLY';
+export type ModerationType = 'LIKE' | 'HIDE' | 'PIN' | 'SETTINGS__NO_BLOCKS' | 'SETTINGS__FOLLOWS_ONLY' | 'NSFW';
 
 export interface Like {
   reference: string
@@ -43,6 +43,9 @@ export class Moderation implements Message {
         break;
       case "SETTINGS__NO_BLOCKS":
         subtype = WireModeration.SETTINGS__NO_BLOCKS_SUBTYPE;
+        break;
+      case "NSFW":
+        subtype = WireModeration.NSFW_SUBTYPE;
         break;
       default:
         break;
