@@ -100,6 +100,10 @@ export class Post implements Message {
       this.title,
       reference,
       refType,
+      {
+        video: this.videoUrl,
+        thumbnail: this.thumbnailUrl,
+      }
     );
   }
 }
